@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Recept Deployment every 2 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Unit=recept-deploy.service
+
+[Install]
+WantedBy=timers.target

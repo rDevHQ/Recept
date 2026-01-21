@@ -1,0 +1,11 @@
+# /opt/recept/cloudflared/config.yml
+tunnel: <YOUR_TUNNEL_UUID_HERE>
+credentials-file: /etc/cloudflared/<YOUR_TUNNEL_UUID_HERE>.json
+
+ingress:
+  - hostname: recept.rdevhq.com
+    service: http://recept-nginx:80 # Maps to the container name via docker network if in same compose, otherwise http://localhost:8080
+  # If running cloudflared on host (outside docker) pointing to dockerized nginx:
+  # service: http://localhost:8080
+  
+  - service: http_status:404

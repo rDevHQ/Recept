@@ -9,12 +9,12 @@ RUN apt-get update && apt-get install -y \
     jq \
     ca-certificates \
     openssh-client \
+    texlive-xetex \
+    texlive-fonts-recommended \
+    texlive-latex-recommended \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Tectonic (TeX engine)
-# Debian is better for Tectonic binary compatibility (glibc)
-RUN curl --proto '=https' --tlsv1.2 -fsSL https://drop.tectonic.new | sh \
-    && mv tectonic /usr/local/bin/
+# (Removed Tectonic installer due to DNS unreliability. Using texlive-xetex instead.)
 
 WORKDIR /app
 

@@ -22,7 +22,7 @@ services:
       # Mount SSH keys if needed for private repo
       # - ./keys:/root/.ssh:ro
     environment:
-      - GIT_REPO=https://github.com/robert-gustavsson/Recept.git
+      - GIT_REPO=https://github.com/rDevHQ/Recept.git
       # Set GIT_REPO to your actual URL. If private, use SSH URL and mount keys.
       - CHECK_INTERVAL=120
 

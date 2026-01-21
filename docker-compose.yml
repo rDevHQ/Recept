@@ -8,23 +8,27 @@ services:
     ports:
       - "3011:3011"
     volumes:
-      - web-data:/usr/share/nginx/html:ro
-    # Hack to serve the 'public' subdirectory as root to allow atomic swaps of that folder
-    # AND change listen port to 3011 to match container port
+      # Bind mount the shared data folder
+      - /DATA/AppData/recept/data:/usr/share/nginx/html:ro
+    # Config to listen on 3011 and serve the 'public' subfolder
     command: /bin/sh -c "sed -i 's|listen       80;|listen       3011;|g' /etc/nginx/conf.d/default.conf && sed -i 's|/usr/share/nginx/html|/usr/share/nginx/html/public|g' /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
 
   builder:
-    build: .
+    image: ghcr.io/rdevhq/recept-builder:latest
     container_name: recept-builder
     restart: always
     volumes:
-      - web-data:/data
-      # Mount SSH keys if needed for private repo
-      # - ./keys:/root/.ssh:ro
+      # Bind mount the shared data folder. 
+      # Builder script writes to /data/public
+      - /DATA/AppData/recept/data:/data
     environment:
       - GIT_REPO=https://github.com/rDevHQ/Recept.git
-      # Set GIT_REPO to your actual URL. If private, use SSH URL and mount keys.
       - CHECK_INTERVAL=120
 
-volumes:
-  web-data:
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+    - arm
+  main: nginx
+  description: "Recept Library Website & Generator"

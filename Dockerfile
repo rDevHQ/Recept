@@ -1,18 +1,18 @@
-FROM alpine:latest
+FROM debian:bookworm-slim
 
 # Install dependencies
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y \
     bash \
     git \
     curl \
     pandoc \
     jq \
-    sed \
-    openssh-client
+    ca-certificates \
+    openssh-client \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Tectonic (TeX engine)
-# Using a widely compatible static binary or standard install if available
-# Alpine edge/community sometimes has it, but binary download is reliable
+# Debian is better for Tectonic binary compatibility (glibc)
 RUN curl --proto '=https' --tlsv1.2 -fsSL https://drop.tectonic.new | sh \
     && mv tectonic /usr/local/bin/
 

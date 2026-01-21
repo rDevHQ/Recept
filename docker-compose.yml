@@ -1,25 +1,15 @@
 version: "3"
 
 services:
-  nginx:
-    image: nginx:alpine
-    container_name: recept-nginx
+  recept:
+    image: ghcr.io/rdevhq/recept-server:latest
+    container_name: recept
     restart: always
     ports:
-      - "3011:3011"
+      - "3011:80"
     volumes:
-      # Bind mount the shared data folder
-      - /DATA/AppData/recept/data:/usr/share/nginx/html:ro
-    # Config to listen on 3011 and serve the 'public' subfolder
-    command: /bin/sh -c "sed -i 's|listen       80;|listen       3011;|g' /etc/nginx/conf.d/default.conf && sed -i 's|/usr/share/nginx/html|/usr/share/nginx/html/public|g' /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
-
-  builder:
-    image: ghcr.io/rdevhq/recept-builder:latest
-    container_name: recept-builder
-    restart: always
-    volumes:
-      # Bind mount the shared data folder. 
-      # Builder script writes to /data/public
+      # Map the host data folder to the container's /data
+      # The container will write to /data/public and Nginx will serve /data/public
       - /DATA/AppData/recept/data:/data
     environment:
       - GIT_REPO=https://github.com/rDevHQ/Recept.git
@@ -30,5 +20,5 @@ x-casaos:
     - amd64
     - arm64
     - arm
-  main: nginx
-  description: "Recept Library Website & Generator"
+  main: recept
+  description: "Recept Library Website"

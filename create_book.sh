@@ -148,11 +148,10 @@ pandoc "$TMP_BOOK" \
   --pdf-engine=xelatex \
   --include-in-header="$ROOT_DIR/pdf_style.tex"
 
-echo "Generating EPUB..."
-pandoc "$TMP_BOOK" \
   -o "$OUT_DIR/Receptbok.epub" \
   --toc \
   --toc-depth=2 \
+  --split-level=2 \
   --metadata title="Receptbok"
 
 echo "Book generation complete."

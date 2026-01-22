@@ -41,12 +41,14 @@ get_tags_from_frontmatter() {
 append_body_clean() {
   local file="$1"
   # Print content, removing YAML frontmatter and the primary H1
+  # Demote existing headers by one level (e.g. ## -> ###) so they don't appear in TOC(2)
   awk '
     BEGIN { inFM=0; removedH1=0 }
     NR==1 && $0=="---" { inFM=1; next }
     inFM==1 && $0=="---" { inFM=0; next }
     inFM==1 { next }
     /^# / && removedH1==0 { removedH1=1; next }
+    /^#/ { print "#" $0; next }
     { print }
   ' "$file"
 }
@@ -74,6 +76,10 @@ append_category_dir() {
 
     # Make ID unique per category to avoid collisions
     recipe_id="${category_dir}-$(slugify "$title")"
+
+    # Add page break before every recipe (for PDF)
+    echo "\newpage" >> "$TMP_BOOK"
+    echo "" >> "$TMP_BOOK"
 
     echo "## $title {#$recipe_id}" >> "$TMP_BOOK"
     echo "" >> "$TMP_BOOK"

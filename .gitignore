@@ -1,0 +1,8 @@
+.DS_Store
+export/
+*.pdf
+*.epub
+*.log
+*.aux
+*.out
+*.toc

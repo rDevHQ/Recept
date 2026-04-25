@@ -8,6 +8,7 @@
 - Aviavgigft? Uppläggningsavgift? Autogiro osv?
 - Stöds Google Gemini för röststyrning?
 - Hur långa är serviceintervallen?
+- Vad kostar service? Serviceavtal?
 - Finns ersättningsbil vid service/verkstad?
 - slutdatum för kampanjen med business edition?
 - är det Matrix strålkastare?

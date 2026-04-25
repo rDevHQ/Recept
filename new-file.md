@@ -7,3 +7,8 @@
 - "Laddkort" med rabatt vid leasing?
 - Aviavgigft? Uppläggningsavgift? Autogiro osv?
 - Stöds Google Gemini för röststyrning?
+- Hur långa är serviceintervallen?
+- Finns ersättningsbil vid service/verkstad?
+- slutdatum för kampanjen med business edition?
+- är det Matrix strålkastare?
+

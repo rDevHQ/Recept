@@ -4,7 +4,7 @@
 - Trådlös Apple CarPlay/android auto?
 - Manuell förvärmning av batteriet?
 - Uppkopplade tjänster (2g/3g)?
-- "Laddkort" med rabatt vid leasing?
+- Polestar Charge med rabatt vid leasing?
 - Aviavgigft? Uppläggningsavgift? Autogiro osv?
 - Stöds Google Gemini för röststyrning?
 - Hur långa är serviceintervallen?

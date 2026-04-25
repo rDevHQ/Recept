@@ -6,3 +6,4 @@
 - Uppkopplade tjänster (2g/3g)?
 - "Laddkort" med rabatt vid leasing?
 - Aviavgigft? Uppläggningsavgift? Autogiro osv?
+- Stöds Google Gemini för röststyrning?

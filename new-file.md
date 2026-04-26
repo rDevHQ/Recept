@@ -1,5 +1,7 @@
 # Polestar 2
 
+
+
 - Nyheter i MY 2027?
 - Trådlös Apple CarPlay/android auto?
 - Manuell förvärmning av batteriet?
